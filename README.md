@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Thermodynamic Analysis of a Lattice Polymer (HP Model)
 
 This project implements a numerical and statistical-mechanical analysis of the 2D HP lattice polymer model.
@@ -26,3 +27,4 @@ hydrophobic (H) or polar (P). The energy of a configuration is determined by the
 ## Results
 
 ## How to Run
+
