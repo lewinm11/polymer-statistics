@@ -1,29 +1,84 @@
-# Thermodynamic Analysis of a Lattice Polymer (HP Model)
+# Thermodynamic Analysis of a 2D HP Lattice Polymer
 
-This project implements a numerical and statistical-mechanical analysis of the 2D HP lattice polymer model.
+This project implements a numerical study of the 2D HP (hydrophobic–polar) lattice polymer model using scaling analysis and exact density-of-states thermodynamics.
 
-The workflow includes:
+The goal is to connect polymer geometry with canonical ensemble thermodynamics.
 
-- Scaling analysis of self-avoiding random walks
-- Density-of-states based thermodynamic calculations
-- Heat capacity evaluation from energy fluctuations
-- Native-state probability analysis
-- Monte Carlo simulation data validation
+---
 
-The implementation reproduces key statistical mechanics relations directly from the partition function and compares exact density-of-states results with Monte Carlo sampling.
-## Model description
-The HP model is a simplified representation of proteins and is used to capture the basics of protein folding.
-In this model a polymer is represented as a self-avoiding walk on a 2D lattice, where each monomer is classified as either
-hydrophobic (H) or polar (P). The energy of a configuration is determined by the number of H-H contacts, with an energy contribution of -1 for each contact. The partition function is computed by summing over all possible configurations, weighted by their Boltzmann factors.
+## Model
 
+The HP model represents a polymer as a self-avoiding walk on a 2D square lattice.  
+Each monomer is hydrophobic (H) or polar (P). Only non-bonded nearest-neighbor H–H contacts contribute to the energy:
 
-## Scaling Behavior of Self-Avoiding Walks
+E = -ε N_HH
 
-## Thermodynamics from Density of States
+All thermodynamic quantities are computed in the canonical ensemble (with k = ε = 1).
 
-## Monte Carlo Validation
+---
 
-## Results
+## Part I — Scaling of Self-Avoiding Walks
+
+At high temperature, the chain behaves as a self-avoiding walk with scaling:
+
+R_ee ∝ N^ν
+
+Using log–log regression of the provided data, the exponent was obtained as:
+
+ν = 0.7569 ± 0.0025
+
+This is consistent with the expected 2D self-avoiding walk value (ν ≈ 0.75).
+
+Generated output:
+![Scaling](figures/scaling.png)
+
+---
+
+## Part II — Thermodynamics from the Density of States
+
+Using the exact density of states g(E) for a 27-bead HP chain, thermodynamic averages are computed via:
+
+⟨f⟩_T = (Σ_E f(E) g(E) e^(−E/T)) / (Σ_E g(E) e^(−E/T))
+
+A shifted Boltzmann factor e^(−(E − E_min)/T) is used for numerical stability.
+
+### Heat Capacity
+
+C_V = (1 / T²) (⟨E²⟩ − ⟨E⟩²)
+
+The heat capacity exhibits a maximum at:
+
+T_max ≈ 0.42
+
+This marks the folding–unfolding crossover.
+
+Generated output:
+![Thermodynamics](figures/thermodynamics.png)
+
+### Native-State Probability
+
+P_nat(T) = 1 / (Σ_E g(E) e^(−(E − E_min)/T))
+
+The rapid decrease of the ground-state probability occurs near the heat-capacity peak, reflecting maximal energy fluctuations.
+
+Generated output:
+![Probability](figures/probability.png)
+
+---
 
 ## How to Run
 
+```bash
+python main.py
+```
+
+Dependencies:
+- numpy
+- matplotlib
+- scipy
+
+---
+
+## Future Work
+
+Planned extension: Monte Carlo sampling and comparison with exact density-of-states results.
