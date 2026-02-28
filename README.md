@@ -30,7 +30,8 @@ Using log–log regression of the provided data, the exponent was obtained as:
 This is consistent with the expected 2D self-avoiding walk value (ν ≈ 0.75).
 
 Generated output:
-![Scaling](figures/scaling.png)
+<img src="scaling.png" width="500">
+
 
 ---
 
