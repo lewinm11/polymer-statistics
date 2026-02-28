@@ -30,6 +30,7 @@ Using log–log regression of the provided data, the exponent was obtained as:
 This is consistent with the expected 2D self-avoiding walk value (ν ≈ 0.75).
 
 Generated output:
+
 <img src="scaling.png" width="500">
 
 
@@ -54,17 +55,18 @@ T_max ≈ 0.42
 This marks the folding–unfolding crossover.
 
 Generated output:
-![Thermodynamics](figures/thermodynamics.png)
+
+<img src="thermodynamics.png" width="500">
 
 ### Native-State Probability
 
 P_nat(T) = 1 / (Σ_E g(E) e^(−(E − E_min)/T))
 
-The rapid decrease of the ground-state probability occurs near the heat-capacity peak, reflecting maximal energy fluctuations.
+The rapid decrease of the ground-state probability occurs near the heat-capacity peak which is due to maximal energy fluctuations.
 
 Generated output:
-![Probability](figures/probability.png)
 
+<img src="probability.png" width="500">
 ---
 
 ## How to Run
